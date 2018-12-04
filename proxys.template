@@ -3,7 +3,7 @@ server {
     server_name  ${DNS_NAME};
 
 
-    location / {
+    location /content2/sso/ {
         proxy_set_header X-Forwarded-Host $host:$server_port;
 
         proxy_set_header x-uw-act-as ${ACTAS};
