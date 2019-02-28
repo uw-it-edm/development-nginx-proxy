@@ -14,5 +14,24 @@ server {
         proxy_redirect http://${PROXY_TO_IP}:10080/ /content2/sso/;
     }
 
+    location /devapi/ {
+        proxy_pass                https://${DEV_DOMAIN}/;
+        proxy_redirect            https://${DEV_DOMAIN}/ /devapi/;
+        proxy_ssl_certificate     /etc/nginx/private/dev.pem;
+        proxy_ssl_certificate_key /etc/nginx/private/dev.key;
+        proxy_ssl_verify off;
+        proxy_ssl_server_name off;
+        proxy_set_header x-uw-act-as ${ACTAS};
+        proxy_set_header Origin "";
+        proxy_set_header Access-Control-Request-Method "";
+        proxy_set_header Referer "";
+        proxy_set_header Host "";
+
+        add_header 'Access-Control-Allow-Origin' '*' always;
+        add_header 'Access-Control-Allow-Methods' '*' always;
+        add_header 'Access-Control-Allow-Headers' '*' always;
+    
+
+    }
 
 }
