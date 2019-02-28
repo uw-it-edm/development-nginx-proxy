@@ -14,4 +14,4 @@ Allow you to run a proxy that point to local apis
 add the dev `key` and `pem` files in `./private` files should be named `dev.key` an `dev.pem`
 it could be symlinks to the actual files
 
-Any calls made to `localhost/devapi/*` will be proxied to domain setup by `DEV_DOMAIN`
+Any calls made to `http://localhost:7070/devapi/*` will be proxied to the domain setup by `DEV_DOMAIN`
